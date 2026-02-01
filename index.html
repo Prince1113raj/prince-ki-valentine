@@ -1,209 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Be My Valentine 💘</title>
-
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      height: 100vh;
-      margin: 0;
-      font-family: "Arial", sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      background-image: url("bg.jpeg"); /* replace with your image */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    body::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: -1;
-    }
-
-    .heart {
-      position: absolute;
-      bottom: -20px;
-      font-size: 20px;
-      animation: floatUp linear infinite;
-      opacity: 0.8;
-    }
-
-    @keyframes floatUp {
-      from { transform: translateY(0) scale(1); opacity: 1; }
-      to   { transform: translateY(-110vh) scale(1.5); opacity: 0; }
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.92);
-      padding: 30px 25px;
-      border-radius: 20px;
-      text-align: center;
-      width: 90%;
-      max-width: 360px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      position: relative;
-      z-index: 1;
-    }
-
-    h1 { margin-bottom: 25px; font-size: 1.6rem; }
-
-    .buttons { position: relative; width: 100%; height: 140px; }
-
-    button {
-      padding: 14px 22px;
-      font-size: 16px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    #yes { background-color: #ff4d6d; color: white; }
-    #no {
-      background-color: #555;
-      color: white;
-      position: absolute;
-      transition: all 1s linear;
-    }
-
-    @media (max-width: 480px) {
-      h1 { font-size: 1.4rem; }
-      button { font-size: 15px; padding: 12px 18px; }
-    }
-
-    /* Dramatic name animation */
-    .letter {
-      display: inline-block;
-      opacity: 0;
-      transform: scale(0);
-      animation: popIn 0.5s forwards;
-    }
-
-    @keyframes popIn {
-      to { opacity: 1; transform: scale(1.4); }
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine 💘</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    height: 100vh;
+    margin: 0;
+    font-family: "Arial", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-image: url("bg.jpeg"); /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  body::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background: rgba(0,0,0,0.4);
+    z-index:-1;
+  }
+  .heart {
+    position: absolute;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp linear infinite;
+    opacity: 0.8;
+  }
+  @keyframes floatUp {
+    from { transform: translateY(0) scale(1); opacity:1; }
+    to { transform: translateY(-110vh) scale(1.5); opacity:0; }
+  }
+  .card {
+    background: rgba(255,255,255,0.92);
+    padding:30px 25px;
+    border-radius:20px;
+    text-align:center;
+    width:90%;
+    max-width:360px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    position: relative;
+    z-index:1;
+  }
+  h1 { margin-bottom:25px; font-size:1.6rem; }
+  .buttons { position:relative; width:100%; height:140px; }
+  button {
+    padding:14px 22px;
+    font-size:16px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+  }
+  #yes { background-color:#ff4d6d; color:white; }
+  #no {
+    background-color:#555;
+    color:white;
+    position:absolute;
+    transition: all 1s linear;
+  }
+  @media(max-width:480px){
+    h1 { font-size:1.4rem; }
+    button { font-size:15px; padding:12px 18px; }
+  }
+  .letter {
+    display:inline-block;
+    opacity:0;
+    transform:scale(0);
+    animation: popIn 0.5s forwards;
+  }
+  @keyframes popIn {
+    to { opacity:1; transform:scale(1.4); }
+  }
+</style>
 </head>
-
 <body>
 
-  <!-- Background Music -->
-  <audio id="bgMusic" src="music.mp3" loop></audio>
-  <!-- Replace 'music.mp3' with your file in the same folder -->
+<audio id="bgMusic" src="music.mp3" loop></audio>
 
-  <div class="card">
-    <h1>Will you be my Valentine? 💕</h1>
-    <div class="buttons">
-      <button id="yes" onclick="sayYes()">Yes 💖</button>
-      <button id="no" onmouseover="moveNo()" ontouchstart="moveNo()">No 🙃</button>
-    </div>
+<div class="card">
+  <h1>Will you be my Valentine? 💕</h1>
+  <div class="buttons">
+    <button id="yes" onclick="sayYes()">Yes 💖</button>
+    <button id="no" onmouseover="moveNo()" ontouchstart="moveNo()">No 🙃</button>
   </div>
+</div>
 
-  <script>
-    const noBtn = document.getElementById("no");
-    const container = document.querySelector(".buttons");
-    const bgMusic = document.getElementById("bgMusic");
+<script>
+  const noBtn = document.getElementById("no");
+  const container = document.querySelector(".buttons");
+  const bgMusic = document.getElementById("bgMusic");
 
-    // No button dodges
-    function moveNo() {
-      const maxX = container.clientWidth - noBtn.offsetWidth;
-      const maxY = container.clientHeight - noBtn.offsetHeight;
-      const randomX = Math.random() * maxX;
-      const randomY = Math.random() * maxY;
-      noBtn.style.left = randomX + "px";
-      noBtn.style.top = randomY + "px";
-    }
+  // No button dodges
+  function moveNo(){
+    const maxX = container.clientWidth - noBtn.offsetWidth;
+    const maxY = container.clientHeight - noBtn.offsetHeight;
+    const randomX = Math.random()*maxX;
+    const randomY = Math.random()*maxY;
+    noBtn.style.left = randomX+"px";
+    noBtn.style.top = randomY+"px";
+  }
 
-    // Slowly drift No button
-    function driftNo() {
-      const maxX = container.clientWidth - noBtn.offsetWidth;
-      const maxY = container.clientHeight - noBtn.offsetHeight;
-      let currentX = parseFloat(getComputedStyle(noBtn).left) || 0;
-      let currentY = parseFloat(getComputedStyle(noBtn).top) || 0;
-      let deltaX = (Math.random() - 0.5) * 20;
-      let deltaY = (Math.random() - 0.5) * 20;
-      let newX = Math.min(Math.max(currentX + deltaX, 0), maxX);
-      let newY = Math.min(Math.max(currentY + deltaY, 0), maxY);
-      noBtn.style.left = newX + "px";
-      noBtn.style.top = newY + "px";
-    }
-    setInterval(driftNo, 1200);
+  // Slowly drift No button
+  function driftNo(){
+    const maxX = container.clientWidth - noBtn.offsetWidth;
+    const maxY = container.clientHeight - noBtn.offsetHeight;
+    let currentX = parseFloat(getComputedStyle(noBtn).left) || 0;
+    let currentY = parseFloat(getComputedStyle(noBtn).top) || 0;
+    let deltaX = (Math.random()-0.5)*20;
+    let deltaY = (Math.random()-0.5)*20;
+    let newX = Math.min(Math.max(currentX+deltaX,0),maxX);
+    let newY = Math.min(Math.max(currentY+deltaY,0),maxY);
+    noBtn.style.left=newX+"px";
+    noBtn.style.top=newY+"px";
+  }
+  setInterval(driftNo,1200);
 
-    // Floating hearts generator
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "💖";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
-      heart.style.fontSize = (16 + Math.random() * 20) + "px";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }
-    setInterval(createHeart, 400);
+  // Floating hearts
+  function createHeart(){
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(3+Math.random()*3)+"s";
+    heart.style.fontSize=(16+Math.random()*20)+"px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+  }
+  setInterval(createHeart,400);
 
-    // YES clicked -> name + exploding hearts + music
-    function sayYes() {
-      // play music
-      bgMusic.play().catch(() => console.log("Autoplay blocked, user interaction needed"));
+  // YES clicked
+  function sayYes(){
+    // Play music first (user interaction triggers autoplay)
+    bgMusic.play().catch(()=>console.log("Autoplay blocked"));
 
-      document.body.innerHTML = `
-        <div style="
-          position: relative;
-          width: 100vw;
-          height: 100vh;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          text-align: center;
-          color: white;
-          font-family: Arial;
-        ">
-          <h1 id="name"></h1>
-        </div>
-      `;
+    document.body.innerHTML=`
+      <div style="
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+        text-align:center;
+        color:white;
+        font-family:Arial;
+      ">
+        <audio id="bgMusic" src="music.mp3" loop autoplay></audio>
+        <h1 id="name"></h1>
+      </div>
+    `;
 
-      const nameContainer = document.getElementById("name");
-      const name = "RITIKA";
+    const nameContainer=document.getElementById("name");
+    const name="YOU MADE MY DAY RITIKA 💞";
+    name.split("").forEach((char,i)=>{
+      const span=document.createElement("span");
+      span.classList.add("letter");
+      span.style.animationDelay=`${i*0.3}s`;
+      span.textContent=char;
+      nameContainer.appendChild(span);
+    });
 
-      // Dramatic letter-by-letter
-      name.split("").forEach((char, i) => {
-        const span = document.createElement("span");
-        span.classList.add("letter");
-        span.style.animationDelay = `${i * 0.3}s`;
-        span.textContent = char;
-        nameContainer.appendChild(span);
-      });
-
-      // Exploding hearts
-      function explodeHearts() {
-        for (let i = 0; i < 20; i++) {
-          const heart = document.createElement("div");
-          heart.classList.add("heart");
-          heart.style.fontSize = `${16 + Math.random()*24}px`;
-          heart.style.left = `${Math.random()*100}vw`;
-          heart.style.top = `${Math.random()*100}vh`;
-          heart.style.animationDuration = `${2 + Math.random()*2}s`;
-          document.body.appendChild(heart);
-          setTimeout(() => heart.remove(), 4000);
-        }
+    // Exploding hearts
+    function explodeHearts(){
+      for(let i=0;i<20;i++){
+        const heart=document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.fontSize=`${16+Math.random()*24}px`;
+        heart.style.left=`${Math.random()*100}vw`;
+        heart.style.top=`${Math.random()*100}vh`;
+        heart.style.animationDuration=`${2+Math.random()*2}s`;
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),4000);
       }
-
-      setInterval(explodeHearts, 500); // keep hearts exploding
     }
-
-  </script>
+    setInterval(explodeHearts,500);
+  }
+</script>
 </body>
 </html>
 
